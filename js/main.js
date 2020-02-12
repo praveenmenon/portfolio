@@ -200,10 +200,10 @@
 	var carousel2Index = 0;
 	var carousel3Index = 0;
 	var carousel4Index = 0;
-	carousel1();
-	carousel2();
-	carousel3();
-	carousel4();
+	// carousel1();
+	// carousel2();
+	// carousel3();
+	// carousel4();
 
 	function carousel1() {
 		var i;
