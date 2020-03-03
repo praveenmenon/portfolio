@@ -95,7 +95,8 @@
 						<!-- <li><a href="#" data-nav-section="skills">Skills</a></li> -->
 						<!-- <li><a href="#" data-nav-section="education">Education</a></li> -->
 						<li><a href="active" data-nav-section="assignment1">Homework 1</a></li>
-						<li><a href="active" data-nav-section="assignment2">Homework 2</a></li>
+						<li><a href="#" data-nav-section="assignment2">Homework 2</a></li>
+						<li><a href="#" data-nav-section="assignment3">Homework 3</a></li>
 						<li><a href="#" data-nav-section="work">Work</a></li>
 						<!-- <li><a href="#" data-nav-section="blog">Blog</a></li> -->
 						<li><a href="#" data-nav-section="contact">Contact</a></li>
@@ -972,6 +973,462 @@ if __name__ == '__main__':
 				                  	<br><br>
 				                  	<p>Please click <a href="homework/HistogramQ2B.py">here</a> to download the python code</p>
 					                  	<br>
+					               </div>
+					            </div>
+					         </article>
+
+					         <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-none">
+					               </div>
+					            </div>
+					         </article>
+					      </div>
+					   </div>
+				   </div>
+				</div>
+			</section>
+
+
+
+
+
+			<section class="colorlib-experience" data-section="assignment3">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<h2 class="colorlib-heading animate-box">Homework 2</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+				         <div class="timeline-centered">
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+
+					               <div class="timeline-icon color-1">
+					                  <i class="icon-pen2"></i>
+					               </div>
+
+					               <div class="timeline-label">
+					                  <h2><a href="#">You will compute the gray-level edges and color edges for the images used in Homework #2. For gray edges you should convert all color images to gray and compute image gradients. You can use Canny edge detector to select edge points</a> <span>Question 1</span></h2>
+					                  <ul>
+					                  	<img src="images/CV_images/greyOriginalImage.png" >
+					                  	<strong>Grey Original Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/SobelX.png" >
+					                  	<strong>Sobel X Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/SobelX.png" >
+					                  	<strong>Sobel Y Image</strong>
+					                  	<br><br>
+					                  	<pre>
+					                  	<code>
+import cv2
+import numpy as np
+import glob
+from matplotlib import pyplot as plt
+
+# read original image
+img = cv2.imread("ST2MainHall4099.jpg")
+
+# Black and white
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+
+def gray_img_gradients(img):
+    sobelx1 = cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=5)
+    sobely1 = cv2.Sobel(img, cv2.CV_64F, 0, 1, ksize=5)
+    cv2.imwrite('Color_Edge/img_gray.png', img)
+    cv2.imwrite('Color_Edge/sobelx1.png', sobelx1)
+    cv2.imwrite('Color_Edge/sobely1.png', sobely1)
+										</code>
+					                  	</pre>
+					                  	<p>Please click <a href="homework/Question1.py">here</a> to download the python code</p>
+					                  	<br>
+
+					                  	<li>first I read an image using the imread command and converted it to gray using cvtColor command of cv2. </li>
+
+										<li>To compute the gradient I calculated the Sobel for the image both x and y </li>
+
+										<li>The soble x and sobel y gradiants are shown above.</li>
+					                  </ul>
+					               </div>
+					            </div>
+					         </article>
+
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-3">
+					                  <i class="icon-pen2"></i>
+					               </div>
+					               <div class="timeline-label">
+					               	<h2><a href="#"> Gradiants for color image</a> <span>Section 3</span></h2>
+
+					                  <ul>
+					                  	<img src="images/CV_images/OriginalImage.png" >
+					                  	<strong>Grey Original Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/R-x.png" >
+					                  	<strong>Red X Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/R-y.png" >
+					                  	<strong>Red Y Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/G-x.png" >
+					                  	<strong>Green X Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/G-y.png" >
+					                  	<strong>Green Y Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/B-x.png" >
+					                  	<strong>Blue X Image</strong>
+					                  	<br><br>
+					                  	<img src="images/CV_images/B-y.png" >
+					                  	<strong>Blue Y Image</strong>
+					                  	<br><br>
+
+					                  	<li>
+					                  		
+					                  		<br>
+					                  		<pre>
+import cv2
+import numpy as np
+import glob
+from matplotlib import pyplot as plt
+
+original_image = []
+histogram = []
+histo_val = []
+histo_val_inner = []
+
+# read images from folder
+for imageFile in sorted(glob.glob("ST2MainHall4/*.jpg")):
+    img = cv2.imread(imageFile)
+    original_image.append(img)
+
+# read original image
+img = cv2.imread("ST2MainHall4099.jpg")
+
+# Black and white
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Color image
+def col_img_gradients(img):
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+    # define range of blue color in HSV
+    lower_blue = np.array([60, 0, 0])
+    upper_blue = np.array([100, 255, 255])
+
+    # define range of green color in HSV
+    lower_green = np.array([0, 60, 0])
+    upper_green = np.array([255, 100, 255])
+
+    # define range of red color in HSV
+    lower_red = np.array([0, 0, 60])
+    upper_red = np.array([255, 255, 100])
+
+    # Threshold the HSV image to get only blue colors
+    mask_blue = cv2.inRange(img, lower_blue, upper_blue)
+
+    # Threshold the HSV image to get only green colors
+    mask_green = cv2.inRange(img, lower_green, upper_green)
+
+    # Threshold the HSV image to get only red colors
+    mask_red = cv2.inRange(img, lower_red, upper_red)
+
+    b_x = cv2.Sobel(np.float32(mask_blue), cv2.CV_32F, 1, 0, ksize=5)
+    b_y = cv2.Sobel(np.float32(mask_blue), cv2.CV_32F, 0, 1, ksize=5)
+
+    g_x = cv2.Sobel(np.float32(mask_green), cv2.CV_32F, 1, 0, ksize=5)
+    g_y = cv2.Sobel(np.float32(mask_green), cv2.CV_32F, 0, 1, ksize=5)
+
+    r_x = cv2.Sobel(np.float32(mask_red), cv2.CV_32F, 1, 0, ksize=5)
+    r_y = cv2.Sobel(np.float32(mask_red), cv2.CV_32F, 0, 1, ksize=5)
+
+    cv2.imwrite('Color_Edge/b_x.png', b_x)
+    cv2.imwrite('Color_Edge/b_y.png', b_y)
+    cv2.imwrite('Color_Edge/g_x.png', g_x)
+    cv2.imwrite('Color_Edge/g_y.png', g_y)
+    cv2.imwrite('Color_Edge/g_x.png', g_x)
+    cv2.imwrite('Color_Edge/r_x.png', r_x)
+    cv2.imwrite('Color_Edge/r_y.png', r_y)
+    cv2.imwrite('Color_Edge/RedMask.png', mask_red)
+    cv2.imwrite('Color_Edge/BlueMask.png', mask_blue)
+
+    return b_x, b_y, g_x, g_y, r_x, r_y
+
+					                  		</pre>
+					                  	</li>
+					                  	<p>Please click <a href="homework/Question1.py">here</a> to download the python code</p>
+					                  	<br>
+
+					                  	<li>For the above images I used sobel to get the gradiance. In case of color image, I had to mask the blue red and green after converting the image to HSV</li>
+
+										<li>I used an upper and lower threshold values for red blue and green to mask the image</li>
+
+										<li>Once the masked image is created I am generating the bx, by, gx, gy, rx, ry using the sobel command to generate the gradiants.</li>
+
+					                  	<br><br>
+					                  	<br><br>
+					                  </ul>
+					               </div>
+					            </div>
+					         </article>
+
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-3">
+					                  <i class="icon-pen2"></i>
+					               </div>
+					               <div class="timeline-label">
+					               	<h2><a href="#"> 2.	Build gray edge histograms for all images in the sequence. Edge histograms should be 36-bin: you can turn a gradient angle into in index by dividing the orientation angle by 10 and rounding to the nearest integer. You should decide whether you want to use the edge magnitude in the histograms or count all selected edges using the same value, say 1.</a> <span>Question 2</span></h2>
+					                  <p>Below is the graph generated for grey histogram with angle on x axis</p>
+					                  <br><br>
+					                  <img src="images/CV_images/Grey histogram of angle.png" >
+					                  <br>
+					                  <strong>Grey histogram of angle</strong>
+					                  <br><br>
+
+					                  <img src="images/CV_images/Color image histogram of angle.png" >
+					                  <br>
+					                  <strong>Color image histogram of angle</strong>
+					                  <br><br>
+					                  <pre>
+# Question 2
+def compute_grey_histogram(img):
+    img_gray_x = cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize=5)
+    img_gray_y = cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize=5)
+
+    magnitude, angle = cv2.cartToPolar(img_gray_x, img_gray_y, angleInDegrees=True)
+    angle = np.rint(angle / 10)
+
+    hist = cv2.calcHist([angle], [0], None, [36], [0, 36])
+    plt.plot(hist)
+    plt.title("grey Histogram of angle")
+    plt.show()
+
+
+#Question 3
+def compute_color_histogram(img):
+    b_x, b_y, g_x, g_y, r_x, r_y = col_img_gradients(img)
+    magnitude, angle = cv2.cartToPolar(b_x + g_x + r_x, b_y + g_y + r_y, angleInDegrees=True)
+    angle = np.rint(angle / 10)
+
+    hist = cv2.calcHist([angle], [0], None, [36], [0, 36])
+    plt.plot(hist)
+    plt.title("Color Histogram of angle")
+    plt.show()
+
+
+def histogramIntersection(a, b):
+    min_val = np.minimum(a, b)
+    max_val = np.maximum(a, b)
+    intersection = np.true_divide(np.sum(min_val), np.sum(max_val))
+    intersection = intersection * 255
+    return intersection.astype(np.uint8)
+
+
+
+def chiSquared(h1, h2):
+    sum = 0
+    sub = np.subtract(h1, h2)
+    numArray = np.multiply(sub, sub)
+    denArray = np.add(h1, h2)
+    nonZeroList = np.nonzero(denArray)
+    if nonZeroList[0].size != 0:
+        newNumArray = np.take(numArray, nonZeroList[0])
+        newDenmArray = np.take(denArray, nonZeroList[0])
+        divide = np.divide(newNumArray, newDenmArray)
+        sum = np.sum(divide)
+    return sum
+					                  		</pre>
+				                  	<br><br>
+					               </div>
+					            </div>
+					         </article>
+
+
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-3">
+					                  <i class="icon-pen2"></i>
+					               </div>
+					               <div class="timeline-label">
+					               	<h2><a href="#"> Write two functions for histograms comparison: histogram intersection and chi-squared measure. Test your functions on the image sequence. Using your histogram distance functions compare all image pairs. Create two images displaying your results. Use either colors or gray levels to represent quality of match.
+					               	</a> <span>Histogram</span></h2>
+					                  <p>For this part i first found the gradiance of the image and then applied the same code used in assignment 2</p>
+					                  <br><br>
+					                  <img src="images/CV_images/Chi squared plot.png" >
+					                  <br>
+					                  <strong>Chi squared plot</strong>
+					                  <br><br>
+					                  <img src="images/CV_images/Histogram Intersection plot.png" >
+					                  <br>
+					                  <strong>Histogram Intersection plot</strong>
+					                  <br><br>
+					                  <pre>
+# calculate histo intersection and chiSquare for 99 images
+for i in range(0, 99):
+    img1 = histogram[i]
+    for j in range(0, 99):
+        img2 = histogram[j]
+        # for histogram
+        histo_val_inner.append(histogramIntersection(img1, img2))
+        # for chi squar
+        # histo_val_inner.append(chiSquared(img1, img2))
+    histo_val.append(histo_val_inner)
+    histo_val_inner = []
+
+val = np.array(histo_val)
+plt.imshow(val)
+# plt.title("Histogram Intersection plot")
+plt.title("Chi squared plot")
+plt.colorbar()
+plt.show()
+
+
+					                  </pre>
+					                  <br><br>
+				                  	<p>Please click <a href="homework/Question1.py">here</a> to download the python code</p>
+				                  	<br><br>
+				                  	<br><br>
+					               </div>
+					            </div>
+					         </article>
+
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-3">
+					                  <i class="icon-pen2"></i>
+					               </div>
+					               <div class="timeline-label">
+					               	<h2><a href="#">Use quiver function from matplotlib to visualize gradients</a> <span>Extra credit</span></h2>
+					                  <p>For the extra credit part one I used mgrid to find x and y values with 7000j.</p>
+					                  <br>
+				                  	<img src="images/CV_images/Color image quiver with image.png" >
+				                  	<br>
+				                  	<strong>Color image quiver with image</strong>
+				                  	<img src="images/CV_images/Color image quiver.png">
+				                  	<br>
+				                  	<strong>Color image quiver</strong>
+				                  	<br><br>
+				                  	<img src="images/CV_images/Grey image quiver with image.png">
+				                  	<br>
+				                  	<strong>Grey image quiver with image</strong>
+				                  	<br><br>
+				                  	<img src="images/CV_images/Grey image quiver.png">
+				                  	<br>
+				                  	<strong>Grey image quiver</strong>
+				                  	<br><br>
+				                  	<br><br>
+				                  	<pre>
+import numpy as np
+import matplotlib.pyplot as plt
+import cv2
+import glob
+
+
+def col_img_gradients(img):
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+    # define range of blue color in HSV
+    lower_blue = np.array([70, 0, 0])
+    upper_blue = np.array([105, 255, 255])
+
+    # define range of green color in HSV
+    lower_green = np.array([0, 70, 0])
+    upper_green = np.array([255, 105, 255])
+
+    # define range of red color in HSV
+    lower_red = np.array([0, 0, 70])
+    upper_red = np.array([255, 255, 105])
+
+    # Threshold the HSV image to get only blue colors
+    mask_blue = cv2.inRange(img, lower_blue, upper_blue)
+
+    # Threshold the HSV image to get only green colors
+    mask_green = cv2.inRange(img, lower_green, upper_green)
+
+    # Threshold the HSV image to get only red colors
+    mask_red = cv2.inRange(img, lower_red, upper_red)
+
+    b_x = cv2.Sobel(np.float32(mask_blue), cv2.CV_32F, 1, 0, ksize=5)
+    b_y = cv2.Sobel(np.float32(mask_blue), cv2.CV_32F, 0, 1, ksize=5)
+
+    g_x = cv2.Sobel(np.float32(mask_green), cv2.CV_32F, 1, 0, ksize=5)
+    g_y = cv2.Sobel(np.float32(mask_green), cv2.CV_32F, 0, 1, ksize=5)
+
+    r_x = cv2.Sobel(np.float32(mask_red), cv2.CV_32F, 1, 0, ksize=5)
+    r_y = cv2.Sobel(np.float32(mask_red), cv2.CV_32F, 0, 1, ksize=5)
+    return b_x, b_y, g_x, g_y, r_x, r_y
+
+
+
+def gray_img_gradients(img):
+    sobelx1 = cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=5)
+    sobely1 = cv2.Sobel(img, cv2.CV_64F, 0, 1, ksize=5)
+
+    return sobelx1, sobely1
+
+
+
+
+
+# Read Image
+img = cv2.imread("ST2MainHall4099.jpg")
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+
+# code to get gradiants for color image
+b_x, b_y, g_x, g_y, r_x, r_y = col_img_gradients(img)
+gradient_x = b_x + g_x + r_x
+gradient_y = b_y + g_y + r_y
+
+# code to get gradiants for grey image
+# gradient_x, gradient_y = gray_img_gradients(img_gray)
+
+w, h = img_gray.shape
+x, y = np.mgrid[0:h:7000j, 0:w:7000j]
+
+fig, ax = plt.subplots()
+# plt.subplot()
+
+cc = ax.imshow(img, extent=[x.min(), x.max(), y.min(), y.max()])
+plt.colorbar(cc)
+plt.quiver(x[::100, ::100], y[::100, ::100], np.uint8(gradient_x[::100, ::100]), np.uint8(gradient_y[::100, ::100]))
+plt.title("color image quiver")
+plt.show()
+				                  	</pre>
+				                  	<br><br>
+				                  	<p>Please click <a href="homework/extra_credit_1.py">here</a> to download the python code</p>
+					                  	<br>
+					               </div>
+					            </div>
+					         </article>
+
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-3">
+					                  <i class="icon-pen2"></i>
+					               </div>
+					               <div class="timeline-label">
+					               	<h2><a href="#">The slides illustrating how to compute color gradients using eigenvalues and eigenvectors are attached. Use the proposed method to obtain the edges.</span></h2>
+					                  <br>
+				                  	<img src="images/CV_images/Eigenvalue.png" >
+				                  	<br>
+				                  	<strong>Eigenvalue</strong>
+				                  	<br><br>
+				                  	<img src="images/CV_images/Eigenvectors.png">
+				                  	<br>
+				                  	<strong>Eigenvectors</strong>
+				                  	<br><br>
+				                  	<img src="images/CV_images/Gradient.png">
+				                  	<br>
+				                  	<strong>Gradient</strong>
+				                  	<br><br>
+				                  	<br><br>
 					               </div>
 					            </div>
 					         </article>
