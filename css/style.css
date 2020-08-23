@@ -313,9 +313,11 @@ figure {
             color: rgba(44, 152, 240, 0.8);
             border-bottom: 1px solid rgba(44, 152, 240, 0.7); }
           #colorlib-hero .flexslider .slider-text > .slider-text-inner > .desc > .quotes p {
-            font-size: 230%;}
-            #colorlib-hero .flexslider .slider-text > .slider-text-inner > .desc > .quotes p strong {
-            color: #F9BE41;}
+            font-size: 230%;
+            color: #EC5554;
+          }
+          #colorlib-hero .flexslider .slider-text > .slider-text-inner > .desc > .quotes p strong {
+            color: #FFFFFF;}
           #colorlib-hero .flexslider .slider-text > .slider-text-inner > .desc-secondary > .quotes p {
             font-size: 230%;}
             #colorlib-hero .flexslider .slider-text > .slider-text-inner > .desc-secondary > .quotes p strong {
